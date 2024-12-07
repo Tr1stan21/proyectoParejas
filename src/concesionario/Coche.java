@@ -1,8 +1,8 @@
 package concesionario;
 
 public class Coche {
-	
-	//Atributos
+
+    // Atributos
     private int id;
     private String matricula;
     private String marca;
@@ -10,12 +10,12 @@ public class Coche {
     private String color;
     private double precio;
     private int anio;
-    
+
     private static Coche[] coches = new Coche[20];
     static int numCoches = 0;
 
-    //Constructor
-    public Coche (String matricula, String marca, String modelo, String color, double precio, int anio) {
+    // Constructor
+    public Coche(String matricula, String marca, String modelo, String color, double precio, int anio) {
         this.id = numCoches + 1;
         this.matricula = matricula;
         this.marca = marca;
@@ -25,7 +25,7 @@ public class Coche {
         this.anio = anio;
     }
 
-    //Getters y setters
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -42,8 +42,16 @@ public class Coche {
         return marca;
     }
 
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public String getModelo() {
         return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
     public String getColor() {
@@ -65,28 +73,56 @@ public class Coche {
     public int getAnio() {
         return anio;
     }
-    
-    //Métodos
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    // Métodos
     public static String agregarCoche(Coche coche) {
         if (numCoches >= coches.length) {
-            return "No se pueden agregar más coches";
+            return "\nNo se pueden agregar más coches";
         }
-        
+
         coches[numCoches] = coche;
         numCoches++;
-        return "Coche agregado con ID "+ coche.getId();
+        return "\nCoche agregado con ID " + coche.getId();
     }
-    
+
     public static void mostrarCoches() {
         if (numCoches == 0) {
-            System.out.println("No hay coches en el concesionario.");
+            System.out.println("\nNo hay coches en el concesionario.");
         }
 
         for (int i = 0; i < numCoches; i++) {
             Coche coche = coches[i];
-            System.out.println("ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca() + 
-            		", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: " + coche.getPrecio() + ", Año: " + coche.getAnio());
+            System.out.println(
+                    "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca() +
+                            ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
+                            + coche.getPrecio() + ", Año: " + coche.getAnio());
         }
     }
-    
+
+    public static boolean existeCoche(int id) {
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void editarCoche(int id, String matricula, String marca, String modelo, String color, double precio,
+            int anio) {
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == id) {
+                coches[i].setMatricula(matricula);
+                coches[i].setMarca(marca);
+                coches[i].setModelo(modelo);
+                coches[i].setColor(color);
+                coches[i].setPrecio(precio);
+                coches[i].setAnio(anio);
+            }
+        }
+    }
 }
