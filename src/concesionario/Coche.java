@@ -11,12 +11,13 @@ public class Coche {
     private double precio;
     private int anio;
 
-    private static Coche[] coches = new Coche[20];
-    static int numCoches = 0;
+    private static Coche[] coches = new Coche[100];
+    private static int numCoches = 0;
+    private static int contadorId = 1;
 
     // Constructor
     public Coche(String matricula, String marca, String modelo, String color, double precio, int anio) {
-        this.id = numCoches + 1;
+        this.id = contadorId;
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
@@ -86,12 +87,14 @@ public class Coche {
 
         coches[numCoches] = coche;
         numCoches++;
+        contadorId++;
         return "\nCoche agregado con ID " + coche.getId();
     }
 
     public static void mostrarCoches() {
         if (numCoches == 0) {
             System.out.println("\nNo hay coches en el concesionario.");
+            return;
         }
 
         for (int i = 0; i < numCoches; i++) {
@@ -101,6 +104,32 @@ public class Coche {
                             ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
                             + coche.getPrecio() + ", Año: " + coche.getAnio());
         }
+    }
+
+    public static String eliminarCoche(int idAEliminar) {
+        boolean encontrado = false;
+
+        // Buscamos el coche con el ID dado
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == idAEliminar) {
+                // Desplazamos los coches que están después del coche eliminado
+                for (int j = i; j < numCoches - 1; j++) {
+                    coches[j] = coches[j + 1]; // Mueve cada coche hacia la izquierda
+                }
+                coches[numCoches - 1] = null; // Limpiar la última posición
+                numCoches--; // Reducir el contador de coches
+
+                encontrado = true;
+                return "Coche con ID " + idAEliminar + " eliminado exitosamente.";
+            }
+        }
+
+        // Si no encontramos el coche con el ID dado
+        if (!encontrado) {
+            return "No se encontró un coche con ID " + idAEliminar;
+        }
+
+        return "";
     }
 
     public static boolean existeCoche(int id) {

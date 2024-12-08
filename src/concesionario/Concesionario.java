@@ -42,6 +42,12 @@ public class Concesionario {
 					Coche.mostrarCoches();
 					break;
 
+				case 4:
+					System.out.print("Ingrese el ID del coche a eliminar: ");
+					int idAEliminar = Integer.parseInt(scanner.nextLine());
+					System.out.println(Coche.eliminarCoche(idAEliminar));
+					break;
+
 				case 5:
 					System.out.print("\nIngrese el ID del coche a editar: ");
 					int idEditar = Integer.parseInt(scanner.nextLine());
