@@ -10,13 +10,15 @@ public class Coche {
     private String color;
     private double precio;
     private int anio;
+    private boolean vendido;
 
     private static Coche[] coches = new Coche[100];
     private static int numCoches = 0;
     private static int contadorId = 1;
 
     // Constructor
-    public Coche(String matricula, String marca, String modelo, String color, double precio, int anio) {
+    public Coche(String matricula, String marca, String modelo, String color, double precio, int anio,
+            boolean vendido) {
         this.id = contadorId;
         this.matricula = matricula;
         this.marca = marca;
@@ -24,6 +26,7 @@ public class Coche {
         this.color = color;
         this.precio = precio;
         this.anio = anio;
+        this.vendido = vendido;
     }
 
     // Getters y setters
@@ -79,6 +82,14 @@ public class Coche {
         this.anio = anio;
     }
 
+    public boolean getVendido() {
+        return vendido;
+    }
+
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
+    }
+
     // Métodos
     public static String agregarCoche(Coche coche) {
         if (numCoches >= coches.length) {
@@ -102,7 +113,7 @@ public class Coche {
             System.out.println(
                     "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca() +
                             ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
-                            + coche.getPrecio() + ", Año: " + coche.getAnio());
+                            + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: " + coche.getVendido());
         }
     }
 
@@ -151,6 +162,14 @@ public class Coche {
                 coches[i].setColor(color);
                 coches[i].setPrecio(precio);
                 coches[i].setAnio(anio);
+            }
+        }
+    }
+
+    public static void venderCoche(int id, boolean vender) {
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == id) {
+                coches[i].setVendido(vender);
             }
         }
     }

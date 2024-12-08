@@ -15,7 +15,8 @@ public class Concesionario {
 			System.out.println("3. Buscar coche por ID");
 			System.out.println("4. Eliminar coche");
 			System.out.println("5. Editar información de coche");
-			System.out.println("6. Salir");
+			System.out.println("6. Vender coche");
+			System.out.println("7. Salir");
 			System.out.print("Ingrese una opción: ");
 			opcion = Integer.parseInt(scanner.nextLine());
 
@@ -33,8 +34,9 @@ public class Concesionario {
 					double precio = Double.parseDouble(scanner.nextLine());
 					System.out.print("Año: ");
 					int anio = Integer.parseInt(scanner.nextLine());
+					boolean vendido = false;
 
-					Coche nuevoCoche = new Coche(matricula, marca, modelo, color, precio, anio);
+					Coche nuevoCoche = new Coche(matricula, marca, modelo, color, precio, anio, vendido);
 					System.out.println(Coche.agregarCoche(nuevoCoche));
 					break;
 
@@ -77,6 +79,20 @@ public class Concesionario {
 					break;
 
 				case 6:
+					System.out.print("\nIntroduzca el ID del coche a eliminar o 0 para salir: ");
+					int idVender = Integer.parseInt(scanner.nextLine());
+					if (Coche.existeCoche(idVender)) {
+						boolean vender = true;
+						Coche.venderCoche(idVender, vender);
+						System.out.println("\nEl coche con ID " + idVender + " ha sido vendido.");
+					} else if (idVender == 0) {
+						System.out.println("\nOperación cancelada");
+					} else {
+						System.out.println("\nID del coche no encontrado");
+					}
+					break;
+
+				case 7:
 					break;
 
 				default:
@@ -84,7 +100,7 @@ public class Concesionario {
 					break;
 			}
 
-		} while (opcion != 6);
+		} while (opcion != 7);
 
 		scanner.close();
 	}
