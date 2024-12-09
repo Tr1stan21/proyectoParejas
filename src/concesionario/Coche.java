@@ -16,6 +16,7 @@ public class Coche {
     private static int numCoches = 0;
     private static int contadorId = 1;
 
+    // Añadimos 5 coches al comenzar el programa
     static {
         coches[0] = new Coche("ABC123", "Toyota", "Corolla", "Rojo", 20000.0, 2021, false);
         contadorId++;
@@ -105,7 +106,9 @@ public class Coche {
         this.vendido = vendido;
     }
 
-    // Métodos
+    // MÉTODOS
+
+    // Método para agregar coches
     public static String agregarCoche(Coche coche) {
         if (numCoches >= coches.length) {
             return "\nNo se pueden agregar más coches";
@@ -117,6 +120,7 @@ public class Coche {
         return "\nCoche agregado con ID " + coche.getId();
     }
 
+    // Método para mostrar los coches existentes en el array
     public static void mostrarCoches() {
         if (numCoches == 0) {
             System.out.println("\nNo hay coches en el concesionario.");
@@ -129,19 +133,18 @@ public class Coche {
             if (coche.getVendido() == true) {
                 System.out.println(
                         "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca()
-                                +
-                                ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
+                                + ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
                                 + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: Sí");
             } else if (coche.getVendido() == false) {
                 System.out.println(
                         "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca()
-                                +
-                                ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
+                                + ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
                                 + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: No");
             }
         }
     }
 
+    // Método para eliminar coches
     public static String eliminarCoche(int idAEliminar) {
         boolean encontrado = false;
 
@@ -164,10 +167,10 @@ public class Coche {
         if (!encontrado) {
             return "No se encontró un coche con ID " + idAEliminar;
         }
-
         return "";
     }
 
+    // Método para comprobar si existe algún coche con el ID proporcionado
     public static boolean existeCoche(int id) {
         for (int i = 0; i < numCoches; i++) {
             if (coches[i].getId() == id) {
@@ -177,6 +180,7 @@ public class Coche {
         return false;
     }
 
+    // Método para editar coches
     public static void editarCoche(int id, String matricula, String marca, String modelo, String color, double precio,
             int anio) {
         for (int i = 0; i < numCoches; i++) {
@@ -191,6 +195,7 @@ public class Coche {
         }
     }
 
+    // Método para vender coches
     public static void venderCoche(int id, boolean vender) {
         for (int i = 0; i < numCoches; i++) {
             if (coches[i].getId() == id) {

@@ -103,7 +103,7 @@ public class Concesionario {
 
 			} while (opcion != 7);
 		} catch (NumberFormatException e) {
-			System.out.println("\nError: Ingrese una opción válida.");
+			System.out.println("\nError: Ingrese un dato válido.");
 		}
 
 		scanner.close();
