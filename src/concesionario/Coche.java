@@ -16,6 +16,21 @@ public class Coche {
     private static int numCoches = 0;
     private static int contadorId = 1;
 
+    static {
+        coches[0] = new Coche("ABC123", "Toyota", "Corolla", "Rojo", 20000.0, 2021, false);
+        contadorId++;
+        coches[1] = new Coche("XYZ456", "Honda", "Civic", "Azul", 18000.0, 2020, false);
+        contadorId++;
+        coches[2] = new Coche("DEF789", "Ford", "Focus", "Negro", 22000.0, 2022, false);
+        contadorId++;
+        coches[3] = new Coche("GHI012", "Chevrolet", "Malibu", "Blanco", 25000.0, 2021, false);
+        contadorId++;
+        coches[4] = new Coche("JKL345", "Nissan", "Altima", "Gris", 23000.0, 2022, true);
+        contadorId++;
+
+        numCoches = 5;
+    }
+
     // Constructor
     public Coche(String matricula, String marca, String modelo, String color, double precio, int anio,
             boolean vendido) {
@@ -110,10 +125,20 @@ public class Coche {
 
         for (int i = 0; i < numCoches; i++) {
             Coche coche = coches[i];
-            System.out.println(
-                    "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca() +
-                            ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
-                            + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: " + coche.getVendido());
+
+            if (coche.getVendido() == true) {
+                System.out.println(
+                        "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca()
+                                +
+                                ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
+                                + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: Sí");
+            } else if (coche.getVendido() == false) {
+                System.out.println(
+                        "ID: " + coche.getId() + ", Matrícula: " + coche.getMatricula() + ", Marca: " + coche.getMarca()
+                                +
+                                ", Modelo: " + coche.getModelo() + ", Color: " + coche.getColor() + ", Precio: "
+                                + coche.getPrecio() + ", Año: " + coche.getAnio() + ", Vendido: No");
+            }
         }
     }
 
