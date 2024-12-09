@@ -265,6 +265,25 @@ public class Coche {
     		
     	}
     }
+// Método para buscar coches por estado de venta (vendido/no vendido)
+public static void buscarPorEstadoVenta(boolean vendidoBuscado) {
+    boolean encontrado = false;
+    for (int i = 0; i < numCoches; i++) {
+        if (coches[i].getVendido() == vendidoBuscado) {
+            Coche coche = coches[i];
+            System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                    "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+            encontrado = true;
+        }
+    }
+    if (!encontrado) {
+        if (vendidoBuscado) {
+            System.out.println("No se encontró ningún coche vendido.");
+        } else {
+            System.out.println("No se encontró ningún coche no vendido.");
+        }
+    }
+}
     // Método para eliminar coches
     public static String eliminarCoche(int idAEliminar) {
         boolean encontrado = false;
@@ -299,32 +318,6 @@ public class Coche {
             }
         }
         return false;
-    }
- // Método para eliminar un coche
-    public static String eliminarCoche(int idAEliminar) {
-        boolean encontrado = false;
-
-        // Buscamos el coche con el ID dado
-        for (int i = 0; i < numCoches; i++) {
-            if (coches[i].getId() == idAEliminar) {
-                // Desplazamos los coches que están después del coche eliminado
-                for (int j = i; j < numCoches - 1; j++) {
-                    coches[j] = coches[j + 1];  // Mueve cada coche hacia la izquierda
-                }
-                coches[numCoches - 1] = null;  // Limpiar la última posición
-                numCoches--;  // Reducir el contador de coches
-
-                encontrado = true;
-                return "Coche con ID " + idAEliminar + " eliminado exitosamente.";
-            }
-        }
-
-        // Si no encontramos el coche con el ID dado
-        if (!encontrado) {
-            return "No se encontró un coche con ID " + idAEliminar;
-        }
-
-        return "";
     }
     // Método para editar coches
     public static void editarCoche(int id, String matricula, String marca, String modelo, String color, double precio,
