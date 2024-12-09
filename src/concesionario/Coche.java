@@ -143,7 +143,128 @@ public class Coche {
             }
         }
     }
+// Buscar coches según características
+    //Buscar por matrícula
+    public static void buscarPorMatricula(String matriculaBuscada) {
+        boolean encontrado = false;
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getMatricula().equalsIgnoreCase(matriculaBuscada)) {
+            	Coche coche = coches[i];
+            	System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+  	                  "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún coche con la matrícula: " + matriculaBuscada);
+        }
+    }
 
+    // Buscar coche por marca
+  public static void buscarPorMarca(String marcaBuscada) {
+	  boolean encontrado = false;
+	
+	  // Recorremos el arreglo de coches y comparamos la marca de cada coche
+	  for (int i = 0; i < numCoches; i++) {
+	      if (coches[i].getMarca().equalsIgnoreCase(marcaBuscada)) {
+	          // Si la marca coincide mostramos la lista de coches
+	          Coche coche = coches[i];
+	          System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+	                  "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+	          encontrado = true;
+	      }
+  }
+
+   //Si no se encuentra ningún coche con la marca indicada
+	  if (!encontrado) {
+	      System.out.println("No se encontraron coches de la marca: " + marcaBuscada);
+	  }
+	}
+
+    // Buscar coche por modelo
+    public static void buscarPorModelo(String modeloBuscado) {
+        boolean encontrado = false;
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getModelo().equalsIgnoreCase(modeloBuscado)) {
+            	Coche coche = coches[i];
+            	System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                        "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún coche con el modelo: " + modeloBuscado);
+        }
+    }
+
+    // Buscar coche por color
+    public static void buscarPorColor(String colorBuscado) {
+        boolean encontrado = false;
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getColor().equals(colorBuscado)) {
+            	Coche coche = coches[i];
+            	System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                        "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún coche con el color: " + colorBuscado);
+        }
+    }
+
+    // Buscar coche por precio (mayor que)
+    public static void buscarPorPrecio(double precioBuscado) {
+        boolean encontrado = false;
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getPrecio() > precioBuscado) {
+            	Coche coche = coches[i];
+            	System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                        "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún coche con un precio mayor a: " + precioBuscado);
+        }
+    }
+
+    // Buscar coche por año
+    public static void buscarPorAnio(int anioBuscado) {
+        boolean encontrado = false;
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getAnio() == anioBuscado) {
+            	Coche coche = coches[i];
+            	System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                        "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún coche del año: " + anioBuscado);
+        }
+    }
+
+    public static void buscarPorId(int idBuscado) {
+    	boolean encontrado = false;
+
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == idBuscado) {
+                // Si se encuentra el coche, mostrar los detalles
+                Coche coche = coches[i];
+                System.out.println("Coche encontrado:");
+                System.out.println("ID: " + coche.getId() + "| Matrícula: " + coche.getMatricula() + "| Marca: " + coche.getMarca() + 
+                        "| Modelo: " + coche.getModelo() + "| Color: " + coche.getColor() + "| Precio: " + coche.getPrecio() + "| Año: " + coche.getAnio());
+                encontrado = true;
+                break;  
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("No se encontró un coche con el ID: " + idBuscado);
+    		
+    	}
+    }
     // Método para eliminar coches
     public static String eliminarCoche(int idAEliminar) {
         boolean encontrado = false;
@@ -179,7 +300,32 @@ public class Coche {
         }
         return false;
     }
+ // Método para eliminar un coche
+    public static String eliminarCoche(int idAEliminar) {
+        boolean encontrado = false;
 
+        // Buscamos el coche con el ID dado
+        for (int i = 0; i < numCoches; i++) {
+            if (coches[i].getId() == idAEliminar) {
+                // Desplazamos los coches que están después del coche eliminado
+                for (int j = i; j < numCoches - 1; j++) {
+                    coches[j] = coches[j + 1];  // Mueve cada coche hacia la izquierda
+                }
+                coches[numCoches - 1] = null;  // Limpiar la última posición
+                numCoches--;  // Reducir el contador de coches
+
+                encontrado = true;
+                return "Coche con ID " + idAEliminar + " eliminado exitosamente.";
+            }
+        }
+
+        // Si no encontramos el coche con el ID dado
+        if (!encontrado) {
+            return "No se encontró un coche con ID " + idAEliminar;
+        }
+
+        return "";
+    }
     // Método para editar coches
     public static void editarCoche(int id, String matricula, String marca, String modelo, String color, double precio,
             int anio) {
@@ -203,4 +349,13 @@ public class Coche {
             }
         }
     }
+     
+    public static int obtenerEspaciosLibres() {
+    	return coches.length - numCoches;
+    }
+
+    public static int obtenerEspaciosOcupados() {
+        return numCoches;
+    }
+
 }
