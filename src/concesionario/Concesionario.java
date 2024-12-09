@@ -37,6 +37,7 @@ public class Concesionario {
 						int anio = Integer.parseInt(scanner.nextLine());
 						boolean vendido = false;
 
+						// Creamos coche con los atributos anteriormente solicitados
 						Coche nuevoCoche = new Coche(matricula, marca, modelo, color, precio, anio, vendido);
 						System.out.println(Coche.agregarCoche(nuevoCoche));
 						break;
