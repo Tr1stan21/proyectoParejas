@@ -57,7 +57,8 @@ public class Concesionario {
 				                    System.out.println("5. Color");
 				                    System.out.println("6. Precio");
 				                    System.out.println("7. Año");
-				                    System.out.println("8. Salir");
+						    System.out.println("8. Estado de venta (Vendidos o No vendidos)");
+				                    System.out.println("9. Salir");
 				                    System.out.print("Ingrese una opción: ");
 				                    opcion = Integer.parseInt(scanner.nextLine());
 			
@@ -97,13 +98,28 @@ public class Concesionario {
 				                            int anioBuscado = Integer.parseInt(scanner.nextLine());
 				                            Coche.buscarPorAnio(anioBuscado);
 				                            break;
-				                        case 8:
+							case 8:
+					                    System.out.println("¿Desea buscar coches vendidos o no vendidos?");
+					                    System.out.println("1. Vendidos");
+					                    System.out.println("2. No vendidos");
+					                    System.out.print("Ingrese una opción: ");
+					                    int estadoVenta = Integer.parseInt(scanner.nextLine());
+					
+					                if (estadoVenta == 1) {
+					                    Coche.buscarPorEstadoVenta(true);  // Buscar coches vendidos
+					                } else if (estadoVenta == 2) {
+					                    Coche.buscarPorEstadoVenta(false);  // Buscar coches no vendidos
+					                } else {
+					                    System.out.println("Opción inválida.");
+					                }
+					                break;    
+				                        case 9:
 				                            System.out.println("Saliendo del menú de búsqueda.");
 				                            break;
 				                        default:
 				                            System.out.println("Opción inválida. Intente nuevamente.");
 				                    }
-						} while (opcion != 8); // Sale cuando la opción es 8 (Salir)
+						} while (opcion != 9); // Sale cuando la opción es 8 (Salir)
 	               				 break;
 
 					case 4:
